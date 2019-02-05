@@ -1,0 +1,24 @@
+1549380824948	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9IfSorhZ2mUj"
+*** You are running in headless mode.
+1549380825966	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1549380825967	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1549380828516	Marionette	INFO	Listening on port 41857
+1549380828603	Marionette	WARN	TLS certificate errors will be ignored for this session
+1549380832240	Marionette	INFO	Stopped listening on port 41857
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x520011,name=PHttpChannel::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+[Parent 22813, Gecko_IOThread] WARNING: pipe error (66): Connection reset by peer: file /build/firefox-nSunSF/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 22813, Gecko_IOThread] WARNING: pipe error (100): Connection reset by peer: file /build/firefox-nSunSF/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1549380848970	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7j1StYbLHFda"
+1549380849620	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1549380849620	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:23228): Gtk-WARNING **: 17:34:10.127: Theme parsing error: <data>:1:31: Expected ')' in color definition
+
+(firefox:23228): Gtk-WARNING **: 17:34:10.127: Theme parsing error: <data>:1:75: Expected ')' in color definition
+1549380851864	Marionette	INFO	Listening on port 41367
+1549380851888	Marionette	WARN	TLS certificate errors will be ignored for this session
+1549380857026	Marionette	INFO	Stopped listening on port 41367
+[Parent 23228, Gecko_IOThread] WARNING: pipe error (86): Connection reset by peer: file /build/firefox-nSunSF/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 23228, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-nSunSF/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
