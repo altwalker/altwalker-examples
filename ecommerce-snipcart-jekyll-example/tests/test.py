@@ -2,46 +2,83 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from pages.home import HomePage
+from tests.pages.base import BasePage
+from tests.pages.home import HomePage
+from tests.pages.product import ProductPage
 
 driver = None
 
+
 def setUpRun():
-	global driver
-	options = Options()
-	#options.add_argument('-headless')
+    global driver
+    options = Options()
+    # options.add_a	rgument('-headless')
 
-	print("Create a new Firefox session")
-	driver = webdriver.Firefox(options=options)
+    print("Create a	 new Firefox session")
+    driver = webdriver.Firefox(options=options)
 
-	print("Implicity wait and maximize the window")
-	driver.implicitly_wait(20)
-	driver.maximize_window()
+    print("Implicity wait and maximize the window")
+    driver.implicitly_wait(20)
+    driver.maximize_window()
 
 
 def tearDownRun():
-	global driver
+    global driver
 
-	print("Close the Firefox session")
-	driver.quit()
+    print("Close the Firefox session")
+    driver.quit()
 
 
 class NavigationModel(unittest.TestCase):
-	def setUpModel(self):
-		global driver
+    def setUpModel(self):
+        global driver
 
-		print("Set up for Navigation model")
-		self.driver = driver
+        print("Set up for Navigation model")
+        self.driver = driver
 
-	def edge_loadHomePage(self):
-		print("Load the Ecommerce home page")
-		self.home_page = HomePage(self.driver, "https://dorinoltean.github.io/snipcart-jekyll-integration/")
-		self.home_page.open()
+    def edge_loadHomePage(self):
+        print("Load the Ecommerce home page")
+        home_page = HomePage(self.driver, "https://dorinoltean.github.io/snipcart-jekyll-integration/")
+        home_page.open()
+        self.driver.implicitly_wait(10)
+
+    def edge_addToCartFromHomePage(self):
+        home_page = HomePage(self.driver)
+        home_page.add_to_cart_random_product()
+        self.driver.implicitly_wait(10)
+
+    def edge_navigateToProductPage(self):
+        home_page = HomePage(self.driver)
+        home_page.click_random_product()
+
+        self.driver.implicitly_wait(10)
+
+    def edge_closeCart(self):
+        page = BasePage(self.driver)
+        page.click_close_cart_button()
+        self.driver.implicitly_wait(10)
+
+    def edge_goToHomePage(self):
+        page = BasePage(self.driver)
+        page.click_home_button()
+        self.driver.implicitly_wait(10)
+
+    def vertex_homepage(self):
+        pass
+
+    def vertex_productPage(self):
+        pass
+
+    def vertex_homepageCartOpen(self):
+        page = BasePage(self.driver)
+        self.assertTrue(page.is_cart_open())
+        self.driver.implicitly_wait(10)
 
 
-if __name__ == "__main__":
-	setUpRun()
-	model = NavigationModel()
-	model.setUpModel()
-	model.edge_loadHomePage()
-	tearDownRun()
+# if __name__ == "__main__":
+# 	setUpRun()
+# 	model = NavigationModel()
+# 	model.setUpModel()
+# 	model.edge_loadHomePage()
+# 	model.edge_addProductToCartFromHomePage()
+# 	tearDownRun()

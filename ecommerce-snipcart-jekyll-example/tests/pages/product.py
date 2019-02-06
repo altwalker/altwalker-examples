@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from .base import BasePage
 
 
-class HomePage(BasePage):
+class ProductPage(BasePage):
     """ Interact with elements commnon on Home page """
     products_selector = (By.CSS_SELECTOR, ".products div.product")
 

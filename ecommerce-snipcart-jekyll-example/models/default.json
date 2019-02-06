@@ -1,28 +1,74 @@
 {
-  "name": "Default model",
-  "models": [
-    {
-      "name": "ModelName",
-      "generator": "random(edge_coverage(100) && vertex_coverage(100))",
-      "startElementId": "v0",
-      "vertices": [
-        {
-          "id": "v0",
-          "name": "vertex_A"
-        },
-        {
-          "id": "v1",
-          "name": "vertex_B"
-        }
-      ],
-      "edges": [
-        {
-          "id": "e0",
-          "name": "edge_A",
-          "sourceVertexId": "v0",
-          "targetVertexId": "v1"
-        }
-      ]
-    }
-  ]
+	"models": [
+		{
+			"name": "NavigationModel",
+			"generator": "random(reached_vertex(vertex_homepage))",
+			"startElementId": "e_loadHomePage",
+			"vertices": [
+				{
+					"id": "v_homepage",
+					"name": "vertex_homepage"
+				},
+              	{
+					"id": "v_productPage",
+					"name": "vertex_productPage"
+				},
+              	{
+					"id": "v_homepageCartOpen",
+					"name": "vertex_pageCartOpen"
+				},
+              	{
+					"id": "v_productPageCartOpen",
+					"name": "vertex_pageCartOpen"
+				}
+			],
+			
+			"edges": [
+				
+				{
+					"id": "e_loadHomePage",
+					"name": "edge_loadHomePage",
+					"targetVertexId": "v_homepage"
+				},
+              	{
+					"id": "e_addToCartFromHomePage",
+					"name": "edge_addToCartFromHomePage",
+					"sourceVertexId": "v_homepage",
+					"targetVertexId": "v_homepageCartOpen"
+				},
+              	{
+					"id": "e_navigateToProductPage",
+					"name": "edge_navigateToProductPage",
+					"sourceVertexId": "v_homepage",
+					"targetVertexId": "v_productPage"
+				},
+              	{
+					"id": "e_closeHomepageCart",
+					"name": "edge_closeCart",
+					"sourceVertexId": "v_homepageCartOpen",
+					"targetVertexId": "v_homepage"
+				},
+              	{
+                  "id": "e_goToHomePage",
+                  "name": "edge_goToHomePage",
+                  "sourceVertexId": "v_productPage",
+				  "targetVertexId": "v_homepage"
+                },
+              	{
+                  "id": "e_addToCartFromProductPage",
+                  "name": "edge_addToCartFromProductPage",
+                  "sourceVertexId": "v_productPage",
+				  "targetVertexId": "v_productPageCartOpen"
+                },
+              	{
+                  "id": "e_closeProductPageCart",
+                  "name": "edge_closeCart",
+                  "sourceVertexId": "v_productPageCartOpen",
+				  "targetVertexId": "v_productPage"
+                }
+              
+              	
+			]
+		}
+	]
 }
