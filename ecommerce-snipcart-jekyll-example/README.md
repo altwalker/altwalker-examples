@@ -14,4 +14,6 @@ The path through the graph is generated using graphwalker.
 
 `pip install -r requirements.txt`
 
-`altwalker online -m models/default.json "random(edge_coverage(100) && vertex_coverage(100))" tests/`
+## Running tests
+
+`altwalker online -m models/default.json "random(edge_coverage(100) && vertex_coverage(100))" tests`
