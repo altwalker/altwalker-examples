@@ -13,7 +13,7 @@ class ProductPage(BasePage):
     # check functions
 
     def is_product_page(self):
-        self.is_element_present(*self.product_details_selector)
+        return self.is_element_present(*self.product_details_selector)
 
     # action functions
 
