@@ -2,9 +2,10 @@
 	"models": [
 		{
 			"name": "NavigationModel",
-			"generator": "random(reached_vertex(vertex_homepage))",
+			"generator": "random(edge_coverage(100))",
 			"startElementId": "e_loadHomePage",
 			"vertices": [
+				
 				{
 					"id": "v_homepage",
 					"name": "vertex_homepage"
@@ -21,8 +22,8 @@
 					"id": "v_productPageCartOpen",
 					"name": "vertex_pageCartOpen"
 				}
+              
 			],
-			
 			"edges": [
 				
 				{
