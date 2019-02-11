@@ -5,7 +5,7 @@
 			"generator": "random(never)",
 			"startElementId": "e_load_home_page",
           	"actions": [
-                "itemsInCart=0;"
+                "global.itemsInCart=0;"
             ],
 			"vertices": [
 				
@@ -46,7 +46,7 @@
 					"sourceVertexId": "v_homepage",
 					"targetVertexId": "v_homepage_cart_open",
               	    "actions": [
-                		"itemsInCart++;"
+                		"global.itemsInCart++;"
             		]
 				},
               	{
@@ -72,9 +72,9 @@
                   "name": "add_to_cart_from_product_page",
                   "sourceVertexId": "v_product_page",
 				  "targetVertexId": "v_product_page_cart_open",
-					"actions": [
-						"itemsInCart++;"
-					]
+              	    "actions": [
+                		"global.itemsInCart++;"
+            		]
                 },
               	{
                   "id": "e_close_product_page_cart",
@@ -87,28 +87,28 @@
                   "name": "open_cart",
                   "sourceVertexId": "v_product_page",
 				  "targetVertexId": "v_cart_open_and_not_empty_navigation",
-                  "guard":"itemsInCart>0"
+                  "guard":"global.itemsInCart>0"
                 },
               	{
                   "id": "e_open_cart_2",
                   "name": "open_cart",
                   "sourceVertexId": "v_homepage",
 				  "targetVertexId": "v_cart_open_and_not_empty_navigation",
-                  "guard":"itemsInCart>0"
+                  "guard":"global.itemsInCart>0"
                 },
               	{
                   "id": "e_open_cart_3",
                   "name": "do_nothing",
                   "sourceVertexId": "v_product_page_cart_open",
 				  "targetVertexId": "v_cart_open_and_not_empty_navigation",
-                  "guard":"itemsInCart>0"
+                  "guard":"global.itemsInCart>0"
                 },
               	{
                   "id": "e_open_cart_4",
                   "name": "do_nothing",
                   "sourceVertexId": "v_homepage_cart_open",
 				  "targetVertexId": "v_cart_open_and_not_empty_navigation",
-                  "guard":"itemsInCart>0"
+                  "guard":"global.itemsInCart>0"
                 }
               	
 			]
@@ -123,6 +123,22 @@
                 "sharedState": "cart-open"
               },
               {
+                "id":"v_billing_address",
+                "name":"billing_address"
+              },
+              {
+                "id":"v_payment_method",
+                "name":"payment_method"
+              },
+              {
+                "id":"v_order_confirmation",
+                "name":"order_confirmation"
+              },
+              {
+                "id":"v_order_confirmed",
+                "name":"order_confirmed"
+              },
+              {
                 "id":"v_homepage_checkout",
                 "name":"homepage",
                 "sharedState": "homepage"
@@ -131,9 +147,36 @@
 			],
 			"edges": [
               {
-                "id": "e_finish_checkout",
-                "name": "finish_checkout",
+                "id": "e_go_to_billing_address",
+                "name": "go_to_billing_address",
                 "sourceVertexId": "v_cart_open_and_not_empty_checkout",
+                "targetVertexId": "v_billing_address"
+              },
+              {
+                "id": "e_fill_billing_and_go_to_payment",
+                "name": "fill_billing_and_go_to_payment",
+                "sourceVertexId": "v_billing_address",
+                "targetVertexId": "v_payment_method"
+              },
+              {
+                "id": "e_fill_payment_and_go_to_confirmation",
+                "name": "fill_payment_and_go_to_confirmation",
+                "sourceVertexId": "v_payment_method",
+                "targetVertexId": "v_order_confirmation"
+              },
+              {
+                "id": "e_place_order",
+                "name": "place_order",
+                "sourceVertexId": "v_order_confirmation",
+                "targetVertexId": "v_order_confirmed",
+                "actions": [
+                  "global.itemsInCart=0;"
+              ]
+              },
+              {
+                "id":"e_go_to_homepage_checkout",
+                "name": "go_to_homepage",
+                "sourceVertexId": "v_order_confirmed",
                 "targetVertexId": "v_homepage_checkout"
               }
             ]
