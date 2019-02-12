@@ -91,7 +91,7 @@ NavigationModel and CheckoutModel are linked together by cart_open_and_not_empty
 
 If graphwalker reaches cart_open_and_not_empty in NavigationModel model, it can continue on cart_open_and_not_empty in CheckoutModel.
 
-cart_open_and_not_empty in NavigationModel has 4 edges linked into it. All of the 4 edges are guarded by `"guard":"global.itemsInCart>0"`. That means that graphwalker will not generate a path that goes through the guarded edges unless `global.itemsInCart>0`.  `global.itemsInCart` is initialized at start, and its updated each times items are added to cart, or when the cart is emptied. This way we make sure that every time we reach cart_open_and_not_empty we have items in cart and we can jump to CheckoutModel.
+cart_open_and_not_empty in NavigationModel has 4 edges linked into it. All of the 4 edges are guarded by `"guard":"global.itemsInCart>0"`. That means that graphwalker will not generate a path that goes through the guarded edges unless `global.itemsInCart>0`.  `global.itemsInCart` is initialized at start in NavigationModel, and its updated in `add_to_cart_from_homepage`, `add_to_cart_from_product_page` and `e_place_order`. This way we make sure that every time we reach cart_open_and_not_empty we have items in cart and we can jump to CheckoutModel.
 
 ```
 "actions": ["global.itemsInCart=0;"]
