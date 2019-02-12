@@ -72,7 +72,39 @@ Altwalker verifies that your model and tests are valid, and that all names refer
 
 
 
-## Model
+## Modeling
 
-[models/default.json](models/default.json)
+
 ![ecommerce altwalker model](img/ecommerce-model.png)
+
+We have modeled our ecommerce website as a directional graph. In our model file we specify wihch function is executed by altwalker when we reach a vertex or an edge.
+
+_Each vertex in the graph represents a state_ (e.g. cart_not_empty). This is where we put our asserts.
+
+_Each edge in the graph represents an action_ (e.g. add_to_cart, go_to_product_page ). This is where we put our page interaction code.
+
+
+[models/default.json](models/default.json) contains NavigationModel and CheckoutModel. 
+NavigationModel contains edges and models that verify homepage and product page behaviour.
+CheckoutModel contains edges and models that verify cart checkout process.
+
+
+NavigationModel and CheckoutModel are linked together by cart_open_and_not_empty and homepage vertices. The cart_open_and_not_empty in Navigation model has the same shared_state value as cart_open_and_not_empty in CheckoutModel. The homepage in Navigation model has the same shared_state value as homepage in CheckoutModel. 
+
+If graphwalker reaches cart_open_and_not_empty in Navigation model model, it can continue on cart_open_and_not_empty in Checkout model.
+
+cart_open_and_not_empty in navigation model has 4 edges linked into it. All of the 4 edges areg uarded by `"guard":"global.itemsInCart>0"`. That means that graphwalker will not generate a path that goes through the guarded edges unless `global.itemsInCart>0`.  `global.itemsInCar` is initialized at start, and its updated each times items are added to cart, or when the cart is emptied. This way we make sure that every time we reach cart_open_and_not_empty we can jump to checkout process, as we have items in cart.
+
+```
+"actions": ["global.itemsInCart=0;"]
+"actions": ["global.itemsInCart++;"]
+"guard": "global.itemsInCart>0"
+```
+
+Actions and guards only work on edges.
+
+
+
+
+
+
