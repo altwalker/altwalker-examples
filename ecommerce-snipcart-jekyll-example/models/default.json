@@ -2,7 +2,7 @@
 	"models": [
 		{
 			"name": "NavigationModel",
-			"generator": "random(never)",
+			"generator": "random(edge_coverage(100))",
 			"startElementId": "e_load_home_page",
           	"actions": [
                 "global.itemsInCart=0;"

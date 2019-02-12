@@ -12,7 +12,7 @@ driver = None
 def setUpRun():
     global driver
     options = Options()
-    # options.add_a	rgument('-headless')
+    # options.add_argument('-headless')
 
     print("Create a	 new Firefox session")
     driver = webdriver.Firefox(options=options)
