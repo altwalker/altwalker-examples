@@ -71,9 +71,7 @@ There is currently an [issue](https://github.com/GraphWalker/graphwalker-project
 Altwalker verifies that your model and tests are valid, and that all names referred in the model are implemented in `tests` package
 
 
-
 ## Modeling
-
 
 ![ecommerce altwalker model](img/ecommerce-model.png)
 
@@ -89,11 +87,11 @@ NavigationModel contains edges and models that verify homepage and product page 
 CheckoutModel contains edges and models that verify cart checkout process.
 
 
-NavigationModel and CheckoutModel are linked together by cart_open_and_not_empty and homepage vertices. The cart_open_and_not_empty in Navigation model has the same shared_state value as cart_open_and_not_empty in CheckoutModel. The homepage in Navigation model has the same shared_state value as homepage in CheckoutModel. 
+NavigationModel and CheckoutModel are linked together by cart_open_and_not_empty and homepage vertices. The cart_open_and_not_empty in NavigationModel has the same shared_state value as cart_open_and_not_empty in CheckoutModel. The homepage in NavigationModel has the same shared_state value as homepage in CheckoutModel. 
 
-If graphwalker reaches cart_open_and_not_empty in Navigation model model, it can continue on cart_open_and_not_empty in Checkout model.
+If graphwalker reaches cart_open_and_not_empty in NavigationModel model, it can continue on cart_open_and_not_empty in CheckoutModel.
 
-cart_open_and_not_empty in navigation model has 4 edges linked into it. All of the 4 edges areg uarded by `"guard":"global.itemsInCart>0"`. That means that graphwalker will not generate a path that goes through the guarded edges unless `global.itemsInCart>0`.  `global.itemsInCar` is initialized at start, and its updated each times items are added to cart, or when the cart is emptied. This way we make sure that every time we reach cart_open_and_not_empty we can jump to checkout process, as we have items in cart.
+cart_open_and_not_empty in NavigationModel has 4 edges linked into it. All of the 4 edges are guarded by `"guard":"global.itemsInCart>0"`. That means that graphwalker will not generate a path that goes through the guarded edges unless `global.itemsInCart>0`.  `global.itemsInCart` is initialized at start, and its updated each times items are added to cart, or when the cart is emptied. This way we make sure that every time we reach cart_open_and_not_empty we have items in cart and we can jump to CheckoutModel.
 
 ```
 "actions": ["global.itemsInCart=0;"]
@@ -101,10 +99,4 @@ cart_open_and_not_empty in navigation model has 4 edges linked into it. All of t
 "guard": "global.itemsInCart>0"
 ```
 
-Actions and guards only work on edges.
-
-
-
-
-
-
+Actions and guards are supported on edges only.
