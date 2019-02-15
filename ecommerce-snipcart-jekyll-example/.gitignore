@@ -1,2 +1,6 @@
+# python
 .virtualenv
 __pycache__
+
+# log
+geckodriver.log
