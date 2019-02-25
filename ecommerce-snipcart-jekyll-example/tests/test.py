@@ -48,7 +48,7 @@ class NavigationModel(BaseModel):
 
     def load_home_page(self):
         print("Load the Ecommerce home page")
-        page = HomePage(self.driver, "https://dorinaltom.gitlab.io/snipcart-jekyll-ecommerce-demo/")
+        page = HomePage(self.driver, "https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/")
         page.open()
 
     def add_to_cart_from_homepage(self):
