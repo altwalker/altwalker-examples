@@ -1,0 +1,178 @@
+{
+  "name": "Altom Training Cart Flow Tests",
+  "models": [
+    {
+      "name": "RegisterModel",
+      "generator": "random(edge_coverage(100) and vertex_coverage(100))",
+      "startElementId": "v_start",
+      "vertices": [
+        {
+          "id": "v_start",
+          "name": "v_start"
+        },
+        {
+          "id": "v_home",
+          "name": "v_homePage"
+        },
+        {
+          "id": "v_courses",
+          "name": "v_courses"
+        },
+        {
+          "id": "v_cart",
+          "name": "v_cart"
+        },
+        {
+          "id": "v_Foundations",
+          "name": "v_foundations"
+        },
+        {
+          "id": "v_BugAdvocacy",
+          "name": "v_bugAdvocacy"
+        },
+        {
+          "id": "v_TestDesign",
+          "name": "v_testDesign"
+        },
+        {
+          "id": "v_DomainTesting",
+          "name": "v_domainTesting"
+        }
+      ],
+      "edges": [
+        {
+          "id": "e0",
+          "name": "e_loadHome",
+          "sourceVertexId": "v_start",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e2",
+          "name": "e_backHome",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e3",
+          "name": "e_goCourses",
+          "sourceVertexId": "v_home",
+          "targetVertexId": "v_courses"
+        },
+        {
+          "id": "e21",
+          "name": "e_goFoundations",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_Foundations"
+        },
+        {
+          "id": "e22",
+          "name": "e_regFoundations",
+          "sourceVertexId": "v_Foundations",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e23",
+          "name": "e_backHome",
+          "sourceVertexId": "v_Foundations",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e24",
+          "name": "e_goBugAdvocacy",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_BugAdvocacy"
+        },
+        {
+          "id": "e25",
+          "name": "e_regBugAdvocacy",
+          "sourceVertexId": "v_BugAdvocacy",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e26",
+          "name": "e_backHome",
+          "sourceVertexId": "v_BugAdvocacy",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e27",
+          "name": "e_goTestDesign",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_TestDesign"
+        },
+        {
+          "id": "e28",
+          "name": "e_regTestDesign",
+          "sourceVertexId": "v_TestDesign",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e29",
+          "name": "e_backHome",
+          "sourceVertexId": "v_TestDesign",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e30",
+          "name": "e_goCourses",
+          "sourceVertexId": "v_cart",
+          "targetVertexId": "v_courses"
+        },
+        {
+          "id": "e31",
+          "name": "e_goCart",
+          "sourceVertexId": "v_home",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e32",
+          "name": "e_goCart",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_cart"
+        }, 
+        {
+          "id": "e33",
+          "name": "e_updateVAT",
+          "sourceVertexId": "v_cart",
+          "targetVertexId": "v_cart"
+        }, 
+		{
+          "id": "e34",
+          "name": "e_fillBilling",
+          "sourceVertexId": "v_cart",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e35",
+          "name": "e_goDomainTesting",
+          "sourceVertexId": "v_courses",
+          "targetVertexId": "v_DomainTesting"
+        },
+        {
+          "id": "e36",
+          "name": "e_regDomainTesting",
+          "sourceVertexId": "v_DomainTesting",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e37",
+          "name": "e_backHome",
+          "sourceVertexId": "v_DomainTesting",
+          "targetVertexId": "v_home"
+        },
+        {
+          "id": "e38",
+          "name": "e_cartQuantity",
+          "sourceVertexId": "v_cart",
+          "targetVertexId": "v_cart"
+        },
+        {
+          "id": "e39",
+          "name": "e_rmItem",
+          "sourceVertexId": "v_cart",
+          "targetVertexId": "v_cart"
+        }
+      ]
+    }
+  ]
+}
