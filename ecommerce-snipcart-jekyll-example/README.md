@@ -1,6 +1,6 @@
 # Altwalker ecommerce example
 
-Demo tests repo to showcase how to design your tests as a graph and execute them using altwalker. Documentation of the demo is available [https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md](https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md)
+Demo tests repo to showcase how to design your tests as a graph and execute them using altwalker. Documentation of the demo is available [https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md](https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md). The site under test is available on gitlab pages [https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/)
 
 
 ## Setup your repo locally
