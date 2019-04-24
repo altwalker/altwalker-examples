@@ -12,6 +12,23 @@ source .virtualenv/bin/activate
 pip install -r requirements.txt
 ```
 
+
+## Install dependencies
+
+Altwalker 
+
+```bash
+pip install altwalker
+```
+
+Geckodriver
+
+```bash
+wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+tar -xvzf geckodriver* -C /
+ln -s /geckodriver /usr/local/bin
+```
+
 ## Run the tests with altwalker
 
 See docs for [Altwalker](https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/installation.md)

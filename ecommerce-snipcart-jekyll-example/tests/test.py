@@ -12,14 +12,14 @@ driver = None
 def setUpRun():
     global driver
     options = Options()
-    # options.add_argument('-headless')
+    options.add_argument('-headless')
 
-    print("Create a	 new Firefox session")
+    print("Create a new Firefox session")
     driver = webdriver.Firefox(options=options)
 
-    print("Implicity wait and maximize the window")
+    print("Set implicitly wait")
     driver.implicitly_wait(15)
-    driver.maximize_window()
+    print("Window size:", driver.get_window_size())
 
 
 def tearDownRun():
@@ -32,7 +32,7 @@ def tearDownRun():
 class BaseModel(unittest.TestCase):
     def cart_open_and_not_empty(self):
         page = CartPage(self.driver)
-        page.wait_for_snipcart_initialization()
+        page.wait_for_snipcart()
 
         self.assertTrue(page.is_cart_open())
         self.assertTrue(page.items_in_cart() > 0)
@@ -110,6 +110,7 @@ class CheckoutModel(BaseModel):
 
     def go_to_billing_address(self):
         page = CartPage(self.driver)
+
         page.click_content_cart_next_step_button()
 
     def fill_billing_and_go_to_payment(self):
@@ -135,21 +136,26 @@ class CheckoutModel(BaseModel):
 
     def billing_address(self):
         page = CartPage(self.driver)
+        page.wait_for_snipcart()
         self.assertTrue(page.is_billing_cart_view())
 
     def payment_method(self):
         page = CartPage(self.driver)
+        page.wait_for_snipcart()
         self.assertTrue(page.is_payment_cart_view())
 
     def order_confirmation(self):
         page = CartPage(self.driver)
+        page.wait_for_snipcart()
         self.assertTrue(page.is_order_confirmation_cart_view())
 
     def order_confirmed(self):
-        pass
+        page = BasePage(self.driver)
+        page.wait_for_snipcart()
 
     def homepage(self):
         page = HomePage(self.driver)
+        page.wait_for_snipcart()
         self.assertTrue(page.is_products_list_present())
 
 

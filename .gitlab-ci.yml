@@ -1,0 +1,25 @@
+
+python tests:
+  stage: test
+  image: altwalker/altwalker:latest
+  before_script:
+    - wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/66.0.3/linux-x86_64/en-US/firefox-66.0.3.tar.bz2
+    - tar -xvf firefox-66.0.3.tar.bz2 -C /
+    - ln -s /firefox/firefox /usr/bin
+    - /usr/bin/firefox --version
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+    - tar -xvzf geckodriver*
+    - cp ./geckodriver /usr/local/bin/geckodriver
+    - cd ecommerce-snipcart-jekyll-example
+    - pip3 install -r requirements.txt --user
+
+  script:
+    - altwalker check -m models/default.json "random(length(40))"
+    - altwalker verify -m models/default.json tests
+    - altwalker online -m models/default.json "random(length(40))" tests
+
+  artifacts:
+    paths:
+      - "*/altwalker.log"
+      - "*/graphwalker-service.log"
+    when: always
