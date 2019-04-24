@@ -4,3 +4,13 @@
 
 #geckodriver
 geckodriver.log
+
+#dotnet
+bin/
+obj/
+
+
+#altwalker
+graphwalker-service.log
+dotnet-executor.log
+altwalker.log

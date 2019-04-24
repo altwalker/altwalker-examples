@@ -4,11 +4,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-class snipcart_initialized():
+class snipcart_initialized_and_ready():
     """An expectation for checking if snipcart is initialized"""
 
     def __call__(self, driver):
-        return driver.execute_script("return Snipcart._initialized && Snipcart.ready;")
+        return driver.execute_script("return typeof Snipcart !== 'undefined' && Snipcart._initialized && Snipcart.ready;")
 
 
 class BasePage(Page):
@@ -20,8 +20,8 @@ class BasePage(Page):
     total_items_in_cart_locator = (By.CSS_SELECTOR, ".snipcart-total-items")
     cart_items_list_holder_locator = (By.CSS_SELECTOR, "#snipcart-sub-content")
 
-    def wait_for_snipcart_initialization(self):
-        WebDriverWait(self.driver, 10).until(snipcart_initialized())
+    def wait_for_snipcart(self):
+        WebDriverWait(self.driver, 10).until(snipcart_initialized_and_ready())
 
     def __init__(self, selenium, base_url=None, timeout=10, **url_kwargs):
         return super().__init__(selenium, base_url=base_url, timeout=timeout, **url_kwargs)
@@ -36,7 +36,7 @@ class BasePage(Page):
         return int(self.find_element(*self.cart_button_locator).find_element(*self.total_items_in_cart_locator).text)
 
     def click_cart_button(self):
-        self.wait_for_snipcart_initialization()
+        self.wait_for_snipcart()
         self.find_element(*self.cart_button_locator).click()
 
     def click_close_cart_button(self):
@@ -81,19 +81,19 @@ class CartPage(BasePage):
         return self.is_element_present(*self.order_confirmation_place_order_button_locator)
 
     def click_content_cart_next_step_button(self):
-        self.wait_for_snipcart_initialization()
+        self.wait_for_snipcart()
         self.find_element(*self.content_cart_next_step_button_locator).click()
 
     def click_billing_addres_next_step_button(self):
-        self.wait_for_snipcart_initialization()
+        self.wait_for_snipcart()
         self.find_element(*self.billing_addres_next_step_button_locator).click()
 
     def click_payment_next_step_button(self):
-        self.wait_for_snipcart_initialization()
+        self.wait_for_snipcart()
         self.find_element(*self.payment_next_step_button_locator).click()
 
     def click_order_confirmation_place_order_button(self):
-        self.wait_for_snipcart_initialization()
+        self.wait_for_snipcart()
         self.find_element(*self.order_confirmation_place_order_button_locator).click()
 
     def fill_in_billing_adress_form(self, name="", city="", email="", street_address1="", postal_code=""):
