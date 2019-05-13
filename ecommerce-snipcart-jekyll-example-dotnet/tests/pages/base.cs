@@ -140,13 +140,12 @@ namespace ecommerce.snipcart.jekyll.example.dotnet.pages
 
         public void wait_for_snipcart()
         {
+            const string snipcartInitializedQuery = "return typeof Snipcart !== 'undefined' && typeof Snipcart._initialized !== 'undefined' && typeof Snipcart.ready !== 'undefined' && Snipcart._initialized && Snipcart.ready;";
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            while ((Boolean)js.ExecuteScript("return typeof Snipcart !== 'undefined' && Snipcart._initialized && Snipcart.ready;") != true)
+            while( (Boolean?)js.ExecuteScript(snipcartInitializedQuery) != true)
             {
                 System.Threading.Thread.Sleep(500);
             }
         }
-
-
     }
 }

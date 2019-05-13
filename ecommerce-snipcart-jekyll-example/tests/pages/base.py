@@ -8,7 +8,7 @@ class snipcart_initialized_and_ready():
     """An expectation for checking if snipcart is initialized"""
 
     def __call__(self, driver):
-        return driver.execute_script("return typeof Snipcart !== 'undefined' && Snipcart._initialized && Snipcart.ready;")
+        return driver.execute_script("return typeof Snipcart !== 'undefined' && typeof Snipcart._initialized !== 'undefined' && typeof Snipcart.ready !== 'undefined' && Snipcart._initialized && Snipcart.ready;")
 
 
 class BasePage(Page):
