@@ -1,6 +1,8 @@
-# Altwalker ecommerce example
+# AltWalker Python E-commerce example
 
-Demo tests repo to showcase how to design your tests as a graph and execute them using altwalker. Documentation of the demo is available [https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md](https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/demo.md). The site under test is available on gitlab pages [https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/)
+Demo tests repo to showcase how to design your tests as a graph and execute them using altwalker. Documentation of the demo is available [https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html](https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html). 
+
+The site under test is available on gitlab pages [https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/)
 
 
 ## Setup your repo locally
@@ -29,9 +31,9 @@ tar -xvzf geckodriver* -C /
 ln -s /geckodriver /usr/local/bin
 ```
 
-## Run the tests with altwalker
+See docs for [Altwalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html)
 
-See docs for [Altwalker](https://gitlab.com/altom/altwalker/altwalker/tree/master/docs/installation.md)
+## Run the tests with altwalker
 
 ### online
 
