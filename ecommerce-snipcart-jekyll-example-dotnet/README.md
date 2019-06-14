@@ -31,7 +31,7 @@ See docs for [Altwalker installation](https://altom.gitlab.io/altwalker/altwalke
 
 ### offline and walk
 
-`altwalker offline -l c# -m models/default.json "random(edge_coverage(100) && vertex_coverage(100))" -f steps.json`
+`altwalker offline -m models/default.json "random(edge_coverage(100) && vertex_coverage(100))" -f steps.json`
 
 `altwalker walk -l c# tests ./steps.json`
 
