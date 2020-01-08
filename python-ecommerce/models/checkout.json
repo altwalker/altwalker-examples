@@ -1,0 +1,72 @@
+{
+    "name": "E-commerce example",
+    "models": [
+        {
+            "name": "CheckoutModel",
+            "generator": "random(edge_coverage(100))",
+            "vertices": [
+                {
+                    "id": "v5",
+                    "name": "v_cart_open_and_not_empty",
+                    "sharedState": "cart-open"
+                },
+                {
+                    "id": "v6",
+                    "name": "v_billing_address"
+                },
+                {
+                    "id": "v7",
+                    "name": "v_payment_method"
+                },
+                {
+                    "id": "v8",
+                    "name": "v_order_confirmation"
+                },
+                {
+                    "id": "v9",
+                    "name": "v_order_confirmed"
+                },
+                {
+                    "id": "v10",
+                    "name": "v_homepage",
+                    "sharedState": "homepage"
+                }
+            ],
+            "edges": [
+                {
+                    "id": "e12",
+                    "name": "e_go_to_billing_address",
+                    "sourceVertexId": "v5",
+                    "targetVertexId": "v6"
+                },
+                {
+                   "id": "e13",
+                    "name": "e_fill_billing_and_go_to_payment",
+                    "sourceVertexId": "v6",
+                    "targetVertexId": "v7"
+                },
+                {
+                    "id": "e14",
+                    "name": "e_fill_payment_and_go_to_confirmation",
+                    "sourceVertexId": "v7",
+                    "targetVertexId": "v8"
+                },
+                {
+                    "id": "e15",
+                    "name": "e_place_order",
+                    "sourceVertexId": "v8",
+                    "targetVertexId": "v9",
+                    "actions": [
+                        "global.itemsInCart = 0;"
+                    ]
+                },
+                {
+                    "id": "e16",
+                    "name": "e_go_to_homepage",
+                    "sourceVertexId": "v9",
+                    "targetVertexId": "v10"
+                }
+            ]
+        }
+    ]
+}

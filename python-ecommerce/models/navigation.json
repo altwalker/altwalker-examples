@@ -1,0 +1,120 @@
+{
+    "name": "E-commerce example",
+    "models": [
+        {
+            "name": "NavigationModel",
+            "generator": "random(edge_coverage(100))",
+            "startElementId": "e0",
+            "actions": [
+                "global.itemsInCart = 0;"
+            ],
+            "vertices": [
+                {
+                    "id": "v0",
+                    "name": "v_homepage",
+                    "sharedState": "homepage"
+                },
+                {
+                    "id": "v1",
+                    "name": "v_product_page"
+                },
+                {
+                    "id": "v2",
+                    "name": "v_homepage_cart_open"
+                },
+                {
+                    "id": "v3",
+                    "name": "v_product_page_cart_open"
+                },
+                {
+                    "id": "v4",
+                    "name": "v_cart_open_and_not_empty",
+                    "sharedState": "cart-open"
+                }
+            ],
+            "edges": [
+                {
+                    "id": "e0",
+                    "name": "e_load_home_page",
+                    "targetVertexId": "v0"
+                },
+                {
+                    "id": "e1",
+                    "name": "e_add_to_cart_from_homepage",
+                    "sourceVertexId": "v0",
+                    "targetVertexId": "v2",
+                    "actions": [
+                        "global.itemsInCart++;"
+                    ]
+                },
+                {
+                    "id": "e2",
+                    "name": "e_go_to_product_page",
+                    "sourceVertexId": "v0",
+                    "targetVertexId": "v1"
+                },
+                {
+                    "id": "e3",
+                    "name": "e_close_cart",
+                    "sourceVertexId": "v2",
+                    "targetVertexId": "v0"
+                },
+                {
+                    "id": "e4",
+                    "name": "e_go_to_homepage",
+                    "sourceVertexId": "v1",
+                    "targetVertexId": "v0"
+                },
+                {
+                    "id": "e5",
+                    "name": "e_add_to_cart_from_product_page",
+                    "sourceVertexId": "v1",
+                    "targetVertexId": "v3",
+                    "actions": [
+                        "global.itemsInCart++;"
+                    ]
+                },
+                {
+                    "id": "e6",
+                    "name": "e_close_cart",
+                    "sourceVertexId": "v3",
+                    "targetVertexId": "v1"
+                },
+                {
+                    "id": "e7",
+                    "name": "e_open_cart",
+                    "sourceVertexId": "v1",
+                    "targetVertexId": "v4",
+                    "guard": "global.itemsInCart > 0"
+                },
+                {
+                    "id": "e8",
+                    "name": "e_open_cart",
+                    "sourceVertexId": "v0",
+                    "targetVertexId": "v4",
+                    "guard": "global.itemsInCart > 0"
+                },
+                {
+                    "id": "e9",
+                    "name": "e_do_nothing",
+                    "sourceVertexId": "v3",
+                    "targetVertexId": "v4",
+                    "guard": "global.itemsInCart > 0"
+                },
+                {
+                    "id": "e10",
+                    "name": "e_do_nothing",
+                    "sourceVertexId": "v2",
+                    "targetVertexId": "v4",
+                    "guard": "global.itemsInCart > 0"
+                },
+                {
+                    "id": "e11",
+                    "name": "e_close_cart_and_go_to_homepage",
+                    "sourceVertexId": "v4",
+                    "targetVertexId": "v0"
+                }
+            ]
+        }
+    ]
+}
