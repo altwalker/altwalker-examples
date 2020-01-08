@@ -1,11 +1,8 @@
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-
-using NUnit.Framework;
 
 using System;
 
-namespace ecommerce.snipcart.jekyll.example.dotnet.pages
+namespace dotnet.ecommerce.pages
 {
     public class Product : Base
     {
@@ -25,6 +22,5 @@ namespace ecommerce.snipcart.jekyll.example.dotnet.pages
         {
             return wait_for_element_is_visible(By.CssSelector(productDetailsSelector)).Displayed;
         }
-
     }
 }

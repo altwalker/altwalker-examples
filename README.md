@@ -1,9 +1,12 @@
-# AltWalker E-commerce Example
+# AltWalker Examples
 
-This repository holds examples of tests that can be executed with AltWalker. 
+This repository holds examples of tests that can be executed with AltWalker.
 
-The e-commerce website beeing tested is written in markdown and uses [Jekyll](https://jekyllrb.com/) to generate static files. For cart and order management it uses [Snipcart](https://snipcart.com/). The website is hosted on [Gitlab Pages](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/) and its forked from [Snipcart on GitHub](https://github.com/snipcart/snipcart-jekyll-integration).
+Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples.html).
 
-Python example: [ecommerce-snipcart-jekyll-example](ecommerce-snipcart-jekyll-example)
+## Table of Contents
 
-C# example: [ecommerce-snipcart-jekyll-example-dotnet](ecommerce-snipcart-jekyll-example-dotnet)
+* Python Examples:
+    * [E-Commerce Demo](/python-ecommerce/README.md)
+* C#/.NET Examples:
+    * [E-Commerce Demo](/dotnet-ecommerce/README.md)

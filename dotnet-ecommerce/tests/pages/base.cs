@@ -1,14 +1,10 @@
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-
-using NUnit.Framework;
 
 using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 using OpenQA.Selenium.Support.UI;
-using System.Diagnostics;
 
-namespace ecommerce.snipcart.jekyll.example.dotnet.pages
+namespace dotnet.ecommerce.pages
 {
     public class Base
     {
@@ -27,6 +23,7 @@ namespace ecommerce.snipcart.jekyll.example.dotnet.pages
         private const string cartLocator = "snipcart-main-content";
         private const string totalPaidSection = ".snip-static__title";
         private const string itemsInCartValue = ".snip-quantity-trigger__text";
+
         protected readonly IWebDriver driver;
 
         public Base(IWebDriver driver)
@@ -141,8 +138,9 @@ namespace ecommerce.snipcart.jekyll.example.dotnet.pages
         public void wait_for_snipcart()
         {
             const string snipcartInitializedQuery = "return typeof Snipcart !== 'undefined' && typeof Snipcart._initialized !== 'undefined' && typeof Snipcart.ready !== 'undefined' && Snipcart._initialized && Snipcart.ready;";
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            while( (Boolean?)js.ExecuteScript(snipcartInitializedQuery) != true)
+            IJavaScriptExecutor js = (IJavaScriptExecutor) driver;
+
+            while ((Boolean?)js.ExecuteScript(snipcartInitializedQuery) != true)
             {
                 System.Threading.Thread.Sleep(500);
             }

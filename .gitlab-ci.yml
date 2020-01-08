@@ -1,44 +1,61 @@
+stages:
+  - lint
+  - check-models
+  - test
 
-python tests:
-  stage: test
-  image: altwalker/altwalker:latest
+image: altwalker/altwalker:latest
+
+python-ecommerce-lint:
+  stage: lint
   before_script:
-    - wget -q https://download-installer.cdn.mozilla.net/pub/firefox/releases/66.0.3/linux-x86_64/en-US/firefox-66.0.3.tar.bz2
-    - tar -xvf firefox-66.0.3.tar.bz2 -C /
-    - ln -s /firefox/firefox /usr/bin
-    - /usr/bin/firefox --version
-    - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
-    - tar -xvzf geckodriver*
-    - cp ./geckodriver /usr/local/bin/geckodriver
-    - cd ecommerce-snipcart-jekyll-example
-    - pip3 install -r requirements.txt --user
-
+    - cd python-ecommerce
+    - pip3 install flake8
   script:
-    - altwalker check -m models/default.json "random(length(40))"
-    - altwalker verify -m models/default.json tests
-    - altwalker online -m models/default.json "random(length(40))" tests
+    - flake8 --max-line-length=120 tests
 
+python-ecommerce-check-models:
+  stage: check-models
+  before_script:
+    - cd python-ecommerce
+  script:
+    - altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
+
+python-ecommerce-tests:
+  stage: test
+  before_script:
+    - source install_firefox.sh
+    - cd python-ecommerce
+    - pip3 install -r requirements.txt --user
+  script:
+    - altwalker verify -m models/navigation.json tests
+    - altwalker online -m models/navigation.json "random(length(40))" tests
+    - altwalker online -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
   artifacts:
     paths:
-      - "*/altwalker.log"
-      - "*/graphwalker-service.log"
+      - "*.log"
     when: always
 
-dotnet tests:
+dotnet-ecommerce-check-models:
+  stage: check-models
+  before_script:
+    - cd dotnet-ecommerce
+  script:
+    - altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
+
+dotnet-ecommerce-tests:
   stage: test
   image: altwalker/tests:dotnet-v2.2
   before_script:
-    - wget -q https://download-installer.cdn.mozilla.net/pub/firefox/releases/66.0.3/linux-x86_64/en-US/firefox-66.0.3.tar.bz2
-    - tar -xvf firefox-66.0.3.tar.bz2 -C /
-    - ln -s /firefox/firefox /usr/bin
-    - /usr/bin/firefox --version
-    - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
-    - tar -xvzf geckodriver*
-    - cp ./geckodriver /usr/local/bin/geckodriver
+    - source install_firefox.sh
+    - pip3 install idna==2.8
     - pip3 install altwalker
-    - cd ecommerce-snipcart-jekyll-example-dotnet
-
+    - cd dotnet-ecommerce
   script:
-    - altwalker check -m models/default.json "random(length(40))"
-    - altwalker verify -l c# -m models/default.json tests
-    - altwalker online -l c# -m models/default.json "random(length(40))" tests
+    - dotnet build tests
+    - altwalker verify -l c# -m models/navigation.json -m models/checkout.json tests
+    - altwalker online -l c# -m models/navigation.json "random(length(40))" tests
+    - altwalker online -l c# -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
+  artifacts:
+    paths:
+      - "*.log"
+    when: always

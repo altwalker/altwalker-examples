@@ -3,10 +3,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <RootNamespace>ecommerce.snipcart.jekyll.example.dotnet</RootNamespace>
+    <RootNamespace>dotnet.ecommerce</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AltWalker.Executor" Version="0.1.1-alpha" />
+    <PackageReference Include="AltWalker.Executor" Version="0.2.1" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />

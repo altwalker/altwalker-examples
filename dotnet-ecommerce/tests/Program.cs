@@ -3,22 +3,23 @@ using Altom.AltWalker;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
-using NUnit.Framework;
-
 using System;
 
-namespace ecommerce.snipcart.jekyll.example.dotnet
+namespace dotnet.ecommerce
 {
-
     public class Program
     {
-
         public static void Main(string[] args)
         {
+            // Start the executor service
             ExecutorService service = new ExecutorService();
+
+            // Register the setup class and the classes for all models
+            service.RegisterSetup<Setup>();
             service.RegisterModel<NavigationModel>();
             service.RegisterModel<CheckoutModel>();
-            service.RegisterSetup<Setup>();
+
+            // Start the executor service
             service.Run(args);
         }
     }
