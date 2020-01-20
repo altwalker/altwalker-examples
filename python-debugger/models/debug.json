@@ -1,0 +1,44 @@
+{
+    "name": "Debugger example",
+    "models": [
+        {
+            "name": "DebugModel",
+            "generator": "random(edge_coverage(100) && vertex_coverage(100))",
+            "startElementId": "v0",
+            "vertices": [
+                {
+                    "id": "v0",
+                    "name": "v_state_a"
+                },
+                {
+                    "id": "v1",
+                    "name": "v_state_b"
+                },
+                {
+                    "id": "v2",
+                    "name": "v_state_c"
+                }
+            ],
+            "edges": [
+                {
+                    "id": "e0",
+                    "name": "e_action_a",
+                    "sourceVertexId": "v0",
+                    "targetVertexId": "v1"
+                },
+                {
+                    "id": "e1",
+                    "name": "e_action_b",
+                    "sourceVertexId": "v1",
+                    "targetVertexId": "v2"
+                },
+                {
+                    "id": "e2",
+                    "name": "e_action_c",
+                    "sourceVertexId": "v2",
+                    "targetVertexId": "v0"
+                }
+            ]
+        }
+    ]
+}
