@@ -20,6 +20,21 @@ python-debugger-check-models:
   script:
     - altwalker check -m models/debug.json "random(never)"
 
+python-config-lint:
+  stage: lint
+  before_script:
+    - cd python-config
+    - pip3 install flake8
+  script:
+    - flake8 --max-line-length=120 tests
+
+python-config-check-models:
+  stage: check-models
+  before_script:
+    - cd python-config
+  script:
+    - altwalker check -m models/model.json "random(never)"
+
 python-ecommerce-lint:
   stage: lint
   before_script:
@@ -37,6 +52,7 @@ python-ecommerce-check-models:
 
 python-ecommerce-tests:
   stage: test
+  retry: 2
   before_script:
     - source install_firefox.sh
     - cd python-ecommerce
@@ -60,6 +76,7 @@ dotnet-ecommerce-check-models:
 dotnet-ecommerce-tests:
   stage: test
   image: altwalker/tests:dotnet-v2.2
+  retry: 2
   before_script:
     - source install_firefox.sh
     - pip3 install idna==2.8
