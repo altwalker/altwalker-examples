@@ -203,6 +203,6 @@ Status:  PASS
 
 > **Note**: For this example the model is irelevant.
 
-* Example Model from `models/debug.json`
+* Example Model from `models/model.json`
 
-![Config Model](img/model.png)
+![Config Model](img/config-model.png)
