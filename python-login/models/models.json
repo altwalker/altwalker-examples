@@ -1,0 +1,154 @@
+{
+  "name": "This is a simple model for the integration tests",
+  "models": [
+    {
+      "name": "Authentication",
+      "generator": "random(edge_coverage(100) && vertex_coverage(100))",
+      "startElementId": "e0",
+      "actions": ["logged_in = false;", "accounts_created = 0;"],
+      "vertices": [
+        {
+          "id": "v1",
+          "name": "home",
+          "sharedState": ""
+        },
+        {
+          "id": "v2",
+          "name": "login_form",
+          "sharedState": ""
+        },
+        {
+          "id": "v3",
+          "name": "change_password_form",
+          "sharedState": "",
+          "properties": {
+            "blocked": false
+          }
+        },
+        {
+          "id": "v5",
+          "name": "reset_password_form",
+          "sharedState": ""
+        },
+        {
+          "id": "v15",
+          "name": "create_account_form",
+          "sharedState": ""
+        },
+        {
+          "id": "v16",
+          "name": "password_changed_successfuly"
+        },
+        {
+          "id": "v17",
+          "name": "reset_password_success"
+        },
+        {
+          "id": "v18",
+          "name": "account_created"
+        }
+      ],
+      "edges": [
+        {
+          "id": "e0",
+          "name": "start_app",
+          "targetVertexId": "v1"
+        },
+        {
+          "id": "e1",
+          "name": "go_to_login",
+          "sourceVertexId": "v1",
+          "targetVertexId": "v2",
+          "guard": "logged_in==false"
+        },
+        {
+          "id": "e5",
+          "name": "go_to_change_pasword",
+          "sourceVertexId": "v1",
+          "targetVertexId": "v3",
+          "guard": "logged_in==true"
+        },
+        {
+          "id": "e8",
+          "name": "go_to_reset_password",
+          "sourceVertexId": "v2",
+          "targetVertexId": "v5",
+          "guard": "logged_in==false && accounts_created>0"
+        },
+        {
+          "id": "e11",
+          "name": "logout",
+          "sourceVertexId": "v1",
+          "targetVertexId": "v1",
+          "actions": ["logged_in=false"],
+          "guard": "logged_in==true"
+        },
+        {
+          "id": "e10",
+          "name": "go_to_create_account",
+          "sourceVertexId": "v2",
+          "targetVertexId": "v15",
+          "guard": "logged_in==false"
+        },
+        {
+          "id": "e3",
+          "sourceVertexId": "v2",
+          "targetVertexId": "v1",
+          "name": "login",
+          "actions": ["logged_in = true;"],
+          "guard": "accounts_created>0"
+        },
+        {
+          "id": "e4",
+          "name": "go_back_home",
+          "sourceVertexId": "v16",
+          "targetVertexId": "v1"
+        },
+        {
+          "id": "e16",
+          "name": "change_password",
+          "sourceVertexId": "v3",
+          "targetVertexId": "v16"
+        },
+        {
+          "id": "e17",
+          "name": "reset_password",
+          "sourceVertexId": "v5",
+          "targetVertexId": "v17"
+        },
+        {
+          "id": "e18",
+          "name": "go_back_to_login",
+          "sourceVertexId": "v17",
+          "targetVertexId": "v2"
+        },
+        {
+          "id": "e19",
+          "sourceVertexId": "v15",
+          "targetVertexId": "v18",
+          "name": "create_account"
+        },
+        {
+          "id": "e21",
+          "name": "returned_to_login",
+          "sourceVertexId": "v18",
+          "targetVertexId": "v2",
+          "actions": ["accounts_created = accounts_created + 1;"]
+        },
+        {
+          "id": "e6",
+          "name": "attempt_incorrect_repeat_pwd",
+          "sourceVertexId": "v3",
+          "targetVertexId": "v3"
+        },
+        {
+          "id": "e7",
+          "name": "attempt_incorrect_login",
+          "sourceVertexId": "v2",
+          "targetVertexId": "v2",
+          "guard": "accounts_created>0"
+        }
+      ]
+    }
+  ]
+}
