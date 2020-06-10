@@ -1,0 +1,17 @@
+# vscode
+.vscode
+.env
+
+# geckodriver
+geckodriver.log
+
+# python
+__pycache__/
+*.pyc
+
+# python venv
+venv/
+
+# altwalker
+graphwalker-service.log
+altwalker.log
