@@ -12,5 +12,6 @@ Join our Gitter chat room [here](https://gitter.im/altwalker/community) to chat 
     * [E-Commerce Demo](/python-ecommerce/README.md)
     * [Debugger Example](/python-debugger/README.md)
     * [Config Example](/python-config/README.md)
+    * [Python Authentication Module](/python-auth/README.md)
 * C#/.NET Examples:
     * [E-Commerce Demo](/dotnet-ecommerce/README.md)
