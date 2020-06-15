@@ -23,3 +23,7 @@ obj/
 graphwalker-service.log
 dotnet-executor.log
 altwalker.log
+
+
+# tests
+screenshots/

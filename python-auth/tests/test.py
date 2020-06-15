@@ -1,4 +1,5 @@
 import unittest
+import os
 import time
 
 from selenium import webdriver
@@ -13,7 +14,9 @@ from .pages.change_pwd import ChangePwdPage
 import requests
 
 driver = None
-BASE_URL = "http://127.0.0.1:8000/"
+host = os.environ.get("APP_HOST", "127.0.0.1")
+port = os.environ.get("APP_PORT", 8000)
+BASE_URL = "http://{}:{}/".format(host, port)
 
 
 def setUpRun():
@@ -24,7 +27,7 @@ def setUpRun():
     print("Create a new Firefox session")
     driver = webdriver.Firefox(options=options)
 
-    print("Implicity wait and maximize the window")
+    print("Implicitly wait and maximize the window")
     driver.implicitly_wait(20)
     driver.maximize_window()
 
@@ -33,8 +36,9 @@ def tearDownRun():
     global driver
     print("Saving screenshot for test run")
     fileName = time.strftime("%Y%m%d-%H%M%S")
-    driver.save_screenshot("/tmp/Results_%s.png" % fileName)
-
+    if not os.path.exists("screenshots"):
+        os.mkdir("screenshots")
+    driver.save_screenshot("screenshots/Results_%s.png" % fileName)
     print("Close the Firefox session")
     driver.quit()
 
@@ -58,32 +62,40 @@ class Authentication(unittest.TestCase):
     # VERTICES (methods for asserts)
 
     def home(self):
-        self.assertEqual(self.driver.current_url, "http://127.0.0.1:8000/", "The home page is not the one displayed.")
+        self.assertEqual(self.driver.current_url, BASE_URL,
+                         "The home page is not the one displayed.")
 
     def change_password_form(self):
-        self.assertEqual(self.change_pwd_page.get_page_header_text(), "Change password", "The Change Password page is not the one displayed.")
+        self.assertEqual(self.change_pwd_page.get_page_header_text(), "Change password",
+                         "The Change Password page is not the one displayed.")
 
     def create_account_form(self):
         # verify that the create account page is displayed
-        self.assertEqual(self.change_pwd_page.get_page_header_text(), "Sign up", "The Sign Up page is not the one displayed.")
+        self.assertEqual(self.change_pwd_page.get_page_header_text(
+        ), "Sign up", "The Sign Up page is not the one displayed.")
 
     def login_form(self):
         # verify that login page is displayed
-        self.assertEqual(self.login_page.get_page_header_text(), "Login", "The Login page is not the one displayed.")
+        self.assertEqual(self.login_page.get_page_header_text(
+        ), "Login", "The Login page is not the one displayed.")
 
     def reset_password_form(self):
         # verify that we're on the reset password page
-        self.assertEqual(self.reset_page.get_password_reset_header_text(), "Forgot your password?", "The forgot password is not the one displayed.")
+        self.assertEqual(self.reset_page.get_password_reset_header_text(
+        ), "Forgot your password?", "The forgot password is not the one displayed.")
 
     def reset_password_success(self):
         # verify that we're on the pasword reset successful page
-        self.assertEqual(self.reset_page.get_password_reset_header_text(), "Password reset complete", "The success message is missing.")
+        self.assertEqual(self.reset_page.get_password_reset_header_text(
+        ), "Password reset complete", "The success message is missing.")
 
     def password_changed_successfuly(self):
-        self.assertEqual(self.change_pwd_page.get_password_changed_text(), "Your password was changed.", "The success message is missing.")
+        self.assertEqual(self.change_pwd_page.get_password_changed_text(
+        ), "Your password was changed.", "The success message is missing.")
 
     def account_created(self):
-        self.assertEqual(self.login_page.get_page_header_text(), "Login", "The Login page is not the one displayed.")
+        self.assertEqual(self.login_page.get_page_header_text(
+        ), "Login", "The Login page is not the one displayed.")
 
     # EDGES (methods for actions)
 
@@ -94,7 +106,7 @@ class Authentication(unittest.TestCase):
 
         time.sleep(1)
 
-        print("Implicity wait")
+        print("Implicitly wait")
         self.driver.implicitly_wait(30)
 
     def go_to_login(self):
@@ -189,10 +201,14 @@ class Authentication(unittest.TestCase):
         self.reset_page.click_reset_pwd()
 
         self.assertEqual(self.reset_page.get_email_sent_text(),
-                         "We've emailed you instructions for setting your password. You should receive the email shortly!", "The email sent message is missing.")
+                         "We've emailed you instructions for setting your password. " +
+                         "You should receive the email shortly!",
+                         "The email sent message is missing.")
 
-        email_content = requests.get("http://localhost:8000/testability/last-reset-pwd-email").text
-        resetPwURL = email_content.replace(email_content.split("http")[0], '').split("\n")[0]
+        email_content = requests.get(
+            BASE_URL + "testability/last-reset-pwd-email").text
+        resetPwURL = email_content.replace(
+            email_content.split("http")[0], '').split("\n")[0]
         self.driver.get(resetPwURL)
 
         self.new_password = self.reset_page.get_random_password()

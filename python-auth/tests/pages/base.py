@@ -1,15 +1,7 @@
-from pypom import Page
-from time import sleep
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as expected
-from selenium.webdriver.support.select import Select
-
 import random
 import string
 
-from selenium import webdriver
+from pypom import Page
 from selenium.webdriver.common.by import By
 
 
@@ -22,7 +14,8 @@ class Base(Page):
     home_btn = (By.CSS_SELECTOR, ".btn-outline-primary")
 
     def __init__(self, selenium, base_url, locale="", **url_kwargs):
-        super(Base, self).__init__(selenium, base_url, locale=locale, **url_kwargs)
+        super(Base, self).__init__(
+            selenium, base_url, locale=locale, **url_kwargs)
 
     def random_string(self, stringLength=5):
         letters = string.ascii_letters
