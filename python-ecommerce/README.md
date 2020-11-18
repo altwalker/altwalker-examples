@@ -47,7 +47,7 @@ $ set PATH=%PATH%;C:\bin\geckodriver
 On Linux/MacOS:
 
 ```
-$ ln -s /path/to/geckodriver /urs/local/bin/geckodriver
+$ ln -s /path/to/geckodriver /usr/local/bin/geckodriver
 ```
 
 ## Run the tests with AltWalker
