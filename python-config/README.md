@@ -1,6 +1,6 @@
 # AltWalker Example: Python Config
 
-Demo tests to showcase how to use config files with altwalker.
+Demo tests to showcase how to use config files with AltWalker.
 
 ## Setup
 
@@ -26,13 +26,13 @@ Read more about venv [here](https://docs.python.org/3/library/venv.html).
 
 ## Run the debugger with AltWalker
 
-Inside `config/config.ini` and `config/config.json` we have two configurations one for a development enviroment and for a production enviroment. The tests use the `TEST_ENV` env variabile to switch between the development enviroment and the production enviroment (by default the tests will use the developent enviroment if `TEST_ENV` is not set).
+Inside `config/config.ini` and `config/config.json` we have two configurations one for a development environment and for a production environment. The tests use the `TEST_ENV` env variable to switch between the development environment and the production environment (by default the tests will use the development environment if `TEST_ENV` is not set).
 
 ```bash
 $ altwalker online tests -m models/model.json "random(vertex_coverage(100))"
 ```
 
-You will see somethig like this:
+You will see something like this:
 
 ```
 Running:
@@ -107,7 +107,7 @@ Status:  PASS
 
 If you want to use the url for `prod` you will need the set `TEST_ENV`.
 
-* MacOS/Linx:
+* MacOS/Linux:
 
    ```bash
    $ export TEST_ENV=prod
@@ -125,7 +125,7 @@ If you want to use the url for `prod` you will need the set `TEST_ENV`.
   PS C:\path\to\tests> $env:TEST_ENV= "prod"
   ```
 
-And if you ran the tests after setting the `TEST_ENV` you will see somethig like this:
+And if you ran the tests after setting the `TEST_ENV` you will see something like this:
 
 ```bash
 $ altwalker online tests -m models/model.json "random(vertex_coverage(100))"
@@ -201,7 +201,7 @@ Status:  PASS
 
 ## Models
 
-> **Note**: For this example the model is irelevant.
+> **Note**: For this example the model is irrelevant.
 
 * Example Model from `models/model.json`
 

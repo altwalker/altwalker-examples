@@ -37,7 +37,7 @@
         },
         {
           "id": "v16",
-          "name": "password_changed_successfuly"
+          "name": "password_changed_successfully"
         },
         {
           "id": "v17",
@@ -63,7 +63,7 @@
         },
         {
           "id": "e5",
-          "name": "go_to_change_pasword",
+          "name": "go_to_change_password",
           "sourceVertexId": "v1",
           "targetVertexId": "v3",
           "guard": "logged_in==true"

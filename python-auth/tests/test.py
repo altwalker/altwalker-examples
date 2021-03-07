@@ -2,6 +2,7 @@ import unittest
 import os
 import time
 
+import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
@@ -11,7 +12,6 @@ from .pages.signup import SignUpPage
 from .pages.reset import ResetPage
 from .pages.change_pwd import ChangePwdPage
 
-import requests
 
 driver = None
 host = os.environ.get("APP_HOST", "127.0.0.1")
@@ -21,6 +21,7 @@ BASE_URL = "http://{}:{}/".format(host, port)
 
 def setUpRun():
     global driver
+
     options = Options()
     options.add_argument('-headless')
 
@@ -89,7 +90,7 @@ class Authentication(unittest.TestCase):
         self.assertEqual(self.reset_page.get_password_reset_header_text(
         ), "Password reset complete", "The success message is missing.")
 
-    def password_changed_successfuly(self):
+    def password_changed_successfully(self):
         self.assertEqual(self.change_pwd_page.get_password_changed_text(
         ), "Your password was changed.", "The success message is missing.")
 
@@ -137,7 +138,7 @@ class Authentication(unittest.TestCase):
         # return to home page after changing password
         self.change_pwd_page.click_home_btn()
 
-    def go_to_change_pasword(self):
+    def go_to_change_password(self):
         # access the change password form
         self.home_page.click_change_pwd()
 

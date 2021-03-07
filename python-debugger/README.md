@@ -88,11 +88,11 @@ Running:
 (Pdb)
 ```
 
-And now you are in inside the dubugger.
+And now you are in inside the debugger.
 
 ## Models
 
-> **Note**: For this example the model is irelevant.
+> **Note**: For this example the model is irrelevant.
 
 * Example Model from `models/debug.json`
 

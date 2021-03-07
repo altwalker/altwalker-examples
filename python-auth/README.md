@@ -1,6 +1,6 @@
 # AltWalker Example: Python Authentication Module
 
-Demo tests to showcase how to write tests in python and execute them with AltWalker, using a State Transition Model for an authentication module. 
+Demo tests to showcase how to write tests in python and execute them with AltWalker, using a State Transition Model for an authentication module.
 
 ## Setup
 
@@ -48,7 +48,7 @@ $ ln -s /path/to/geckodriver /urs/local/bin/geckodriver
 
 #### Django Auth demo
 
-You can start the demo application from the prebuilt docker image or from source: 
+You can start the demo application from the prebuilt docker image or from source:
 
   * `docker run --rm -it -p 8000:8000 altwalker/demos:django-auth`
 
@@ -61,7 +61,7 @@ You can start the demo application from the prebuilt docker image or from source
 ### check
 
 ```
-$ altwalker check -m models/models.json "random(edge_coverage(100)"
+$ altwalker check -m models/models.json "random(edge_coverage(100))"
 ```
 
 ### verify

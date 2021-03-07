@@ -4,7 +4,7 @@ Demo tests to showcase how to design your tests as a graph and execute them usin
 
 Documentation of the demo is available [here](https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html).
 
-The site under test is available on gitlab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
+The site under test is available on GitLab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
 
 ## Setup
 

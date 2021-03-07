@@ -1,10 +1,10 @@
 # AltWalker Example: C#/.NET E-commerce
 
-Demo tests to showcase how to design your tests as a graph and execute them using altwalker.
+Demo tests to showcase how to design your tests as a graph and execute them using AltWalker.
 
 Documentation of the demo is available [here](https://altom.gitlab.io/altwalker/altwalker/examples/dotnet/e-commerce-demo.html).
 
-The site under test is available on gitlab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
+The site under test is available on GitLab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
 
 ## Setup
 
@@ -21,7 +21,7 @@ Altwalker
 $ pip install altwalker
 ```
 
-See docs for [Altwalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html).
+See docs for [AltWalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html).
 
 ## Run the tests with AltWalker
 
