@@ -1,0 +1,43 @@
+name: Python Config
+
+on:
+  push:
+    paths:
+      - 'python-debugger/**'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup AltWalker
+      uses: altwalker/setup-altwalker@main
+
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 --max-line-length 120 python-debugger
+
+    - name: Install pip dependencies
+      run: |
+        cd python-debugger
+        pip install -r requirements.txt
+
+    - name: Check the models
+      run: |
+        cd python-debugger
+        altwalker check -m models/debug.json "random(never)"
+
+    - name: Verify the code
+      run: |
+        cd python-debugger
+        altwalker verify -m models/debug.json tests
+
+    - name: Archive log files
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: logs
+        path: '**/*.log'
