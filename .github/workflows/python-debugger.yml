@@ -1,9 +1,10 @@
 name: Python Config
 
-on:
-  push:
-    paths:
-      - 'python-debugger/**'
+# on:
+#   push:
+#     paths:
+#       - 'python-debugger/**'
+on: [push]
 
 jobs:
   tests:
