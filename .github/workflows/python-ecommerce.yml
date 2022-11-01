@@ -19,7 +19,7 @@ jobs:
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 python-ecommerce
+        flake8 --max-line-length 120 python-ecommerce
 
     - name: Install pip dependencies
       run: |
