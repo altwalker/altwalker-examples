@@ -6,6 +6,10 @@ name: Python E-Commerce
 #       - 'python-ecommerce/**'
 on: [push]
 
+defaults:
+  run:
+    working-directory: 'python-ecommerce/'
+
 jobs:
   tests:
     runs-on: ubuntu-latest
