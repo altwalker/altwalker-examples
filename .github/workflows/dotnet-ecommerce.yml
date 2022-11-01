@@ -1,0 +1,50 @@
+name: .NET E-Commerce
+
+# on:
+#   push:
+#     paths:
+#       - 'dotnet-ecommerce/**'
+on: [push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup AltWalker
+      uses: altwalker/setup-altwalker@main
+
+    - name: Setup .NET Core SDK 2.1
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '2.1'
+
+    - name: Build
+      run: |
+        cd dotnet-ecommerce
+        dotnet build tests
+
+    - name: Check the models
+      run: |
+        cd dotnet-ecommerce
+        altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
+
+    - name: Verify the code
+      run: |
+        cd dotnet-ecommerce
+        altwalker verify -l c# -m models/navigation.json -m models/checkout.json tests
+
+    - name: Run the tests
+      run: |
+        cd dotnet-ecommerce
+        altwalker online -l c# -m models/navigation.json "random(length(40))" tests
+        altwalker online -l c# -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
+
+    - name: Archive log files
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: logs
+        path: '**/*.log'
