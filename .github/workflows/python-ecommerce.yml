@@ -10,10 +10,6 @@ jobs:
   tests:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: 'python-ecommerce/'
-
     steps:
     - uses: actions/checkout@v2
       with:
@@ -27,22 +23,26 @@ jobs:
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 --max-line-length 120 .
+        flake8 --max-line-length 120 cd python-ecommerce
 
     - name: Install pip dependencies
       run: |
+        cd python-ecommerce
         pip install -r requirements.txt
 
     - name: Check the models
       run: |
+        cd python-ecommerce
         altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
 
     - name: Verify the code
       run:
+        cd python-ecommerce
         altwalker verify -m models/navigation.json tests
 
     - name: Run the tests
       run: |
+        cd python-ecommerce
         altwalker online -m models/navigation.json "random(length(40))" tests
         altwalker online -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
 
