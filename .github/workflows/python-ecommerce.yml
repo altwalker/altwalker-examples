@@ -1,0 +1,59 @@
+name: Python E-Commerce
+
+on:
+  push:
+    paths:
+      - 'python-ecommerce/**'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup AltWalker
+      uses: altwalker/setup-altwalker@main
+
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 python-ecommerce
+
+    - name: Install pip dependencies
+      run: |
+        cd python-ecommerce
+        pip install python-ecommerce/requirements.txt
+
+    - name: Check the models
+      run: |
+        cd python-ecommerce
+        altwalker check -m models/default.json "random(vertex_coverage(100))"
+
+    - name: Verify the code
+      run:
+        cd python-ecommerce
+        altwalker verify -m models/navigation.json tests
+
+    - name: Run the tests
+      run: |
+        cd python-ecommerce
+        altwalker online -m models/navigation.json "random(length(40))" tests
+        altwalker online -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
+
+    - name: Generate a test sequence
+      run: |
+        cd python-ecommerce
+        altwalker offline -m models/default.json "random(vertex_coverage(100))" -f steps/steps.json
+
+    - name: Run a pre-generated sequence
+      run: |
+        cd python-ecommerce
+        altwalker walk tests steps/steps.json
+
+    - name: Archive log files
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: logs
+        path: '**/*.log'

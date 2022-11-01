@@ -4,7 +4,6 @@ This repository holds examples of tests that can be executed with AltWalker.
 
 Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples.html).
 
-
 ## Table of Contents
 
 * Python Examples:
@@ -17,11 +16,9 @@ Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples.html).
 * C#/.NET Examples:
     * [E-Commerce Demo](/dotnet-ecommerce/README.md)
 
-
 ## Support
 
 Join our [Gitter chat room](https://gitter.im/altwalker/community) or our [Google Group](https://groups.google.com/g/altwalker) to chat with us or with other members of the community.
-
 
 ## License
 
