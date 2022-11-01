@@ -1,10 +1,9 @@
 name: Python Auth
 
-# on:
-#   push:
-#     paths:
-#       - 'python-auth/**'
-on: [push]
+on:
+  push:
+    paths:
+      - 'python-auth/**'
 
 jobs:
   tests:
