@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: 'python-ecommerce/'
 
     - name: Setup AltWalker
       uses: altwalker/setup-altwalker@main
@@ -19,38 +21,24 @@ jobs:
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 --max-line-length 120 python-ecommerce
+        flake8 --max-line-length 120 .
 
     - name: Install pip dependencies
       run: |
-        cd python-ecommerce
         pip install -r requirements.txt
 
     - name: Check the models
       run: |
-        cd python-ecommerce
-        altwalker check -m models/default.json "random(vertex_coverage(100))"
+        altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
 
     - name: Verify the code
       run:
-        cd python-ecommerce
         altwalker verify -m models/navigation.json tests
 
     - name: Run the tests
       run: |
-        cd python-ecommerce
         altwalker online -m models/navigation.json "random(length(40))" tests
         altwalker online -m models/navigation.json "random(length(20))" -m models/checkout.json "random(vertex_coverage(100))" tests
-
-    - name: Generate a test sequence
-      run: |
-        cd python-ecommerce
-        altwalker offline -m models/default.json "random(vertex_coverage(100))" -f steps/steps.json
-
-    - name: Run a pre-generated sequence
-      run: |
-        cd python-ecommerce
-        altwalker walk tests steps/steps.json
 
     - name: Archive log files
       uses: actions/upload-artifact@v2
