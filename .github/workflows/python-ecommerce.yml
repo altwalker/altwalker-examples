@@ -32,7 +32,7 @@ jobs:
         altwalker check -m models/navigation.json "random(never)" -m models/checkout.json "random(never)"
 
     - name: Verify the code
-      run:
+      run: |
         cd python-ecommerce
         altwalker verify -m models/navigation.json tests
 
