@@ -34,7 +34,7 @@ jobs:
     - name: Verify the code
       run: |
         cd python-config
-        altwalker verify -m model/models.json tests
+        altwalker verify -m model/model.json tests
 
     - name: Run the tests
       run: |
