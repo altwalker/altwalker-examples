@@ -1,10 +1,9 @@
 name: Python E-Commerce
 
-# on:
-#   push:
-#     paths:
-#       - 'python-ecommerce/**'
-on: [push]
+on:
+  push:
+    paths:
+      - 'python-ecommerce/**'
 
 jobs:
   tests:
