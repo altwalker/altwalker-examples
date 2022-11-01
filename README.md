@@ -4,8 +4,6 @@ This repository holds examples of tests that can be executed with AltWalker.
 
 Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples.html).
 
-Join our Gitter chat room [here](https://gitter.im/altwalker/community) to chat with us or with other members of the community.
-
 ## Table of Contents
 
 * Python Examples:
@@ -15,3 +13,11 @@ Join our Gitter chat room [here](https://gitter.im/altwalker/community) to chat 
     * [Python Authentication Module](/python-auth/README.md)
 * C#/.NET Examples:
     * [E-Commerce Demo](/dotnet-ecommerce/README.md)
+
+## Support
+
+Join our [Gitter chat room](https://gitter.im/altwalker/community) or our [Google Group](https://groups.google.com/g/altwalker) to chat with us or with other members of the community.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
