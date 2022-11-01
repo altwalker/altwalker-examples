@@ -1,9 +1,10 @@
 name: Python Config
 
-on:
-  push:
-    paths:
-      - 'python-config/**'
+# on:
+#   push:
+#     paths:
+#       - 'python-config/**'
+on: [push]
 
 jobs:
   tests:
