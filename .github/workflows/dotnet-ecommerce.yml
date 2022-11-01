@@ -1,10 +1,9 @@
 name: .NET E-Commerce
 
-# on:
-#   push:
-#     paths:
-#       - 'dotnet-ecommerce/**'
-on: [push]
+on:
+  push:
+    paths:
+      - 'dotnet-ecommerce/**'
 
 jobs:
   tests:
