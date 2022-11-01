@@ -16,12 +16,12 @@ jobs:
     - name: Setup AltWalker
       uses: altwalker/setup-altwalker@main
 
-    - name: Setup .NET Core SDK 2.1
+    - name: Setup .NET Core SDK 2.2
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '2.1'
+        dotnet-version: '2.12'
 
-    - name: Build
+    - name: Build the project
       run: |
         cd dotnet-ecommerce
         dotnet build tests
