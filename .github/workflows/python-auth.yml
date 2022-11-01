@@ -38,7 +38,7 @@ jobs:
         git clone https://gitlab.com/altom/altwalker/altwalker-demos/django-auth
         cd django-auth
         python manage.py migrate
-        python manage.py runserver
+        python manage.py runserver &
 
     - name: Verify the code
       run: |
