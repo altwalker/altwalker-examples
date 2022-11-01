@@ -12,10 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        path: 'python-ecommerce/'
-
-    - run: ls -l
 
     - name: Setup AltWalker
       uses: altwalker/setup-altwalker@main
@@ -23,7 +19,7 @@ jobs:
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 --max-line-length 120 cd python-ecommerce
+        flake8 --max-line-length 120 python-ecommerce
 
     - name: Install pip dependencies
       run: |
