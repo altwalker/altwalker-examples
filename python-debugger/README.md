@@ -83,7 +83,7 @@ Running:
 
 [2020-01-17 17:24:06.434449] DebugModel.v_state_c Running
 --Return--
-> /Users/robert/Documents/gitlab/altwalker-examples/python-debugger/tests/test.py(18)v_state_c()->None
+> ../altwalker-examples/python-debugger/tests/test.py(18)v_state_c()->None
 -> debugger.set_trace()
 (Pdb)
 ```
