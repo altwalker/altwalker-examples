@@ -26,7 +26,7 @@ Read more about venv [here](https://docs.python.org/3/library/venv.html).
 
 ### Install Dependencies
 
-Read more on [AltWalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html).
+Read more on [AltWalker installation](https://altwalker.github.io/altwalker/installation.html).
 
 #### Geckodriver
 
@@ -50,11 +50,12 @@ $ ln -s /path/to/geckodriver /urs/local/bin/geckodriver
 
 You can start the demo application from the prebuilt docker image or from source:
 
-  * `docker run --rm -it -p 8000:8000 altwalker/demos:django-auth`
+```
+$ docker run --rm -it -p 8000:8000 altwalker/demos:django-auth
+```
 
-  or
+Or can start the demo application from the source code (https://github.com/altwalker/django-auth.git).
 
-  * Run from source. [https://gitlab.com/altom/altwalker/altwalker-demos/django-auth](https://gitlab.com/altom/altwalker/altwalker-demos/django-auth)
 
 ## Run the tests with AltWalker
 

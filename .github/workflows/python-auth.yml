@@ -34,7 +34,7 @@ jobs:
       run: |
         pip install django==3.0.3
         pip install django-crispy-forms
-        git clone https://gitlab.com/altom/altwalker/altwalker-demos/django-auth
+        git clone https://github.com/altwalker/django-auth.git
         cd django-auth
         python manage.py migrate
         python manage.py runserver &
