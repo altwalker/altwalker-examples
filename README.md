@@ -2,7 +2,7 @@
 
 This repository holds examples of tests that can be executed with AltWalker.
 
-Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples.html).
+Read more [here](https://altwalker.github.io/altwalker/examples.html).
 
 ## Table of Contents
 
