@@ -2,9 +2,9 @@
 
 Demo tests to showcase how to design your tests as a graph and execute them using AltWalker.
 
-Documentation of the demo is available [here](https://altom.gitlab.io/altwalker/altwalker/examples/dotnet/e-commerce-demo.html).
+Documentation of the demo is available [here](https://altwalker.github.io/altwalker/examples/dotnet/e-commerce-demo.html).
 
-The site under test is available on GitLab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
+The site under test is available on GitHub Pages [here](https://altwalker.github.io/jekyll-ecommerce/).
 
 ## Setup
 
@@ -21,11 +21,11 @@ Altwalker
 $ pip install altwalker
 ```
 
-See docs for [AltWalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html).
+See docs for [AltWalker installation](https://altwalker.github.io/altwalker/installation.html).
 
 ## Run the tests with AltWalker
 
-Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html).
+Read more [here](https://altwalker.github.io/altwalker/examples/dotnet/e-commerce-demo.html).
 
 ### check
 

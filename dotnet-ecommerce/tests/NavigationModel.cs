@@ -72,7 +72,7 @@ namespace dotnet.ecommerce
 
         public void e_load_home_page()
         {
-            driver.Navigate().GoToUrl("https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/");
+            driver.Navigate().GoToUrl("https://altwalker.github.io/jekyll-ecommerce/");
             driver.Manage().Window.Maximize();
             System.Threading.Thread.Sleep(5000);
         }
