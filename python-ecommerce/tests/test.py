@@ -10,7 +10,7 @@ from tests.pages.product import ProductPage
 
 
 HEADLESS = True
-BASE_URL = "https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/"
+BASE_URL = "https://altwalker.github.io/jekyll-ecommerce/"
 
 driver = None
 

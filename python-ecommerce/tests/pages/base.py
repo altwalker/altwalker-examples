@@ -12,7 +12,7 @@ class snipcart_initialized_and_ready():
 
 
 class BasePage(Page):
-    """Interact with elements commnon on every page."""
+    """Interact with elements common on every page."""
 
     _home_button_locator = (By.CSS_SELECTOR, "header .site-title")
     _cart_button_locator = (By.CSS_SELECTOR, "header .snipcart-checkout")
