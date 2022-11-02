@@ -7,13 +7,13 @@ Read more [here](https://altwalker.github.io/altwalker/examples.html).
 ## Table of Contents
 
 * Python Examples:
-    * [E-Commerce Example](/python-ecommerce/README.md)
+    * [E-commerce Example](/python-ecommerce/README.md)
     * [Debugger Example](/python-debugger/README.md)
     * [Config Example](/python-config/README.md)
     * [Authentication Example](/python-auth/README.md)
 
 * C#/.NET Examples:
-    * [E-Commerce Example](/dotnet-ecommerce/README.md)
+    * [E-commerce Example](/dotnet-ecommerce/README.md)
 
 ## Support
 
