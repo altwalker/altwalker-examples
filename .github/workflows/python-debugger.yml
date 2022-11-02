@@ -1,10 +1,9 @@
 name: Python Debugger
 
-# on:
-#   push:
-#     paths:
-#       - 'python-debugger/**'
-on: [push]
+on:
+  push:
+    paths:
+      - 'python-debugger/**'
 
 jobs:
   tests:
