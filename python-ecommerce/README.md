@@ -2,9 +2,9 @@
 
 Demo tests to showcase how to design your tests as a graph and execute them using AltWalker.
 
-Documentation of the demo is available [here](https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html).
+Documentation of the demo is available [here](https://altwalker.github.io/altwalker/examples/python/e-commerce-demo.html).
 
-The site under test is available on GitLab pages [here](https://altom.gitlab.io/altwalker/snipcart-jekyll-ecommerce-demo/).
+The site under test is available on GitHub pages [here](https://altwalker.github.io/jekyll-ecommerce/).
 
 ## Setup
 
@@ -30,7 +30,7 @@ Read more about venv [here](https://docs.python.org/3/library/venv.html).
 
 ### Install Dependencies
 
-Read more on [AltWalker installation](https://altom.gitlab.io/altwalker/altwalker/installation.html).
+Read more on [AltWalker installation](https://altwalker.github.io/altwalker/installation.html).
 
 #### Geckodriver
 
@@ -52,7 +52,7 @@ $ ln -s /path/to/geckodriver /usr/local/bin/geckodriver
 
 ## Run the tests with AltWalker
 
-Read more [here](https://altom.gitlab.io/altwalker/altwalker/examples/python/e-commerce-demo.html).
+Read more [here](https://altwalker.github.io/altwalker/examples/python/e-commerce-demo.html).
 
 ### check
 
