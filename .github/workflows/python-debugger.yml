@@ -36,7 +36,7 @@ jobs:
         altwalker verify -m models/debug.json tests
 
     - name: Archive log files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
         name: logs
