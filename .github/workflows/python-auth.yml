@@ -50,7 +50,7 @@ jobs:
         altwalker online -m models/models.json "random(edge_coverage(100))" tests
 
     - name: Archive log files
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
         name: logs
