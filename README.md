@@ -15,9 +15,16 @@ Read more [here](https://altwalker.github.io/altwalker/examples.html).
 * C#/.NET Examples:
     * [E-commerce Example](/dotnet-ecommerce/README.md)
 
-## Support
+### Community
 
-Join our [Gitter chat room](https://gitter.im/altwalker/community) or our [Google Group](https://groups.google.com/g/altwalker) to chat with us or with other members of the community.
+For help, discussion about best practices, sharing ideas, projects, or any other conversation that benefits from being searchable:
+
+* [Discuss AltWalker on GitHub](https://github.com/orgs/altwalker/discussions)
+* [Google Group](https://groups.google.com/g/altwalker)
+
+For casual chit-chat with us or with other members of the community: 
+
+* [Gitter Chat Room](https://groups.google.com/g/altwalker)
 
 ## License
 
